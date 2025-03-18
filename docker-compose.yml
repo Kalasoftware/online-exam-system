@@ -2,11 +2,13 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
-      - ./:/var/www/html
+      - ./api:/var/www/html/api
     depends_on:
       - db
     environment:
@@ -14,6 +16,8 @@ services:
       - DB_USER=oes_user
       - DB_PASSWORD=oes_password
       - DB_NAME=online_exam
+    networks:
+      - oes-network
 
   db:
     image: mariadb:10.4
@@ -27,6 +31,12 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./online_exam_latest_schema.sql:/docker-entrypoint-initdb.d/online_exam_latest_schema.sql
+    networks:
+      - oes-network
+
+networks:
+  oes-network:
+    driver: bridge
 
 volumes:
   db_data:
