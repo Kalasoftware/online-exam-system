@@ -1,3 +1,59 @@
+# Online Examination System (OES)
+
+A modern, web-based examination platform built with React and PHP, designed to facilitate online assessments with secure and user-friendly features.
+
+## Features
+
+- **User Management**
+  - Multi-role support (Admin, Teacher, Student)
+  - Secure authentication
+  - Profile management
+
+- **Exam Management**
+  - Create and manage exams
+  - Multiple choice questions
+  - Timed assessments
+  - Automatic grading
+
+- **Student Features**
+  - Take exams online
+  - View results immediately
+  - Track progress
+  - Review past attempts
+
+- **Admin Features**
+  - User management
+  - System settings
+  - Exam oversight
+  - Results management
+
+## Tech Stack
+
+- **Frontend**: React, Material-UI
+- **Backend**: PHP
+- **Database**: MySQL/MariaDB
+- **Containerization**: Docker
+
+## Installation
+
+### Prerequisites
+- Node.js and npm
+- PHP 8.0+
+- MySQL/MariaDB
+- XAMPP (for local development) or Docker
+
+### Quick Start
+
+1. Clone the repository
+2. Copy `.env.example` to `.env` and update the database credentials
+3. Import the database schema from `online_exam_latest_schema.sql`
+4. Configure your web server (XAMPP/Docker)
+
+### Docker Setup
+```bash
+docker-compose up -d
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

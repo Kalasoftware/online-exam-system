@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=oes_user
+      - DB_PASSWORD=oes_password
+      - DB_NAME=online_exam
+
+  db:
+    image: mariadb:10.4
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=online_exam
+      - MYSQL_USER=oes_user
+      - MYSQL_PASSWORD=oes_password
+      - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./online_exam_latest_schema.sql:/docker-entrypoint-initdb.d/online_exam_latest_schema.sql
+
+volumes:
+  db_data:
